@@ -91,6 +91,9 @@ class ServerlessAppPlugin(BasePlugin):
             semver = self._replace_value(app.properties[self.LOCATION_KEY],
                                          self.SEMANTIC_VERSION_KEY, intrinsic_resolvers)
 
+            if not app_id:
+                continue
+
             if isinstance(app_id, dict) or isinstance(semver, dict):
                 key = (json.dumps(app_id), json.dumps(semver))
                 self._applications[key] = False
